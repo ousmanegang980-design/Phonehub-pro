@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartLink - Smartphones Certifiés & Vendeurs Partenaires</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased font-['Inter',sans-serif]">
+
+  <!-- TOP BAR -->
+  <aside aria-label="Annonce officielle" class="bg-slate-900 text-white text-xs py-2 px-4 text-center font-medium flex items-center justify-center gap-2">
+    <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+    <span>Service client officiel WhatsApp : <a href="https://wa.me/22893488402" target="_blank" class="font-bold underline text-emerald-400">+228 93 48 84 02</a></span>
+  </aside>
+
+  <!-- NAVIGATION -->
+  <header class="sticky top-0 z-40 w-full bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-xl bg-teal-600 flex items-center justify-center text-white font-black text-xl shadow">S</div>
+        <span class="font-extrabold text-xl text-slate-900">SmartLink <span class="text-xs bg-teal-100 text-teal-800 font-bold px-1.5 py-0.5 rounded">HUB</span></span>
+      </a>
+      <a href="https://wa.me/22893488402?text=Bonjour%20SmartLink,%20je%20souhaite%20commander%20un%20smartphone." 
+         target="_blank" class="bg-[#25D366] hover:bg-[#20ba59] text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 shadow">
+        <i data-lucide="message-circle" class="w-4 h-4"></i>
+        <span>WhatsApp (+228 93 48 84 02)</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO BANNER -->
+  <section class="pt-12 pb-16 bg-gradient-to-b from-teal-50/50 to-white text-center px-4">
+    <span class="inline-block px-3 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-bold uppercase mb-4">Stock vérifié Lomé & Afrique</span>
+    <h1 class="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight max-w-3xl mx-auto">
+      Vos smartphones certifiés au <span class="text-teal-600">meilleur prix</span>.
+    </h1>
+    <p class="text-slate-600 max-w-xl mx-auto mt-4 text-base">
+      iPhone, Samsung, Xiaomi, Tecno neufs et occasions garanties. Échangez et commandez en direct sur WhatsApp.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a href="#catalogue" class="bg-slate-900 text-white font-bold px-6 py-3 rounded-xl hover:bg-slate-800 transition">Voir le catalogue</a>
+      <a href="https://wa.me/22893488402?text=Bonjour%20SmartLink,%20pouvez-vous%20m'aider%20à%20choisir%20un%20téléphone%20?" target="_blank" class="bg-emerald-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-emerald-700 transition">Écrire au +228 93 48 84 02</a>
+    </div>
+  </section>
+
+  <!-- CATALOGUE -->
+  <section id="catalogue" class="py-12 max-w-7xl mx-auto px-4">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 bg-white p-4 rounded-2xl border border-slate-200">
+      <input type="text" id="searchInput" oninput="applyFilters()" placeholder="Rechercher (ex: iPhone 14, Galaxy, 128 Go...)" class="w-full sm:w-80 px-4 py-2 border rounded-xl text-sm" />
+      <div class="flex gap-2">
+        <button onclick="filterBrand('all')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white brand-btn">Tous</button>
+        <button onclick="filterBrand('Apple')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 brand-btn">Apple</button>
+        <button onclick="filterBrand('Samsung')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 brand-btn">Samsung</button>
+        <button onclick="filterBrand('Xiaomi')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 brand-btn">Xiaomi</button>
+        <button onclick="filterBrand('Tecno')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 brand-btn">Tecno</button>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+  </section>
+
+  <!-- SCRIPT -->
+  <script>
+    const PHONE = "22893488402";
+    const phones = [
+      { model: "iPhone 14 Pro", brand: "Apple", price: "275 000 FCFA", storage: "128 Go", condition: "Neuf", img: "https://media.base44.com/images/public/6aa2ea92b6a40159fc488997/194bb33d4_generated_1d86e168.jpg" },
+      { model: "iPhone 14 Pro Max", brand: "Apple", price: "285 000 FCFA", storage: "128 Go", condition: "Neuf", img: "https://media.base44.com/images/public/6aa2ea92b6a40159fc488997/0320ea4f9_generated_da7c6756.jpg" },
+      { model: "iPhone 13 Pro", brand: "Apple", price: "245 000 FCFA", storage: "128 Go", condition: "Reconditionné", img: "https://media.base44.com/images/public/6aa2ea92b6a40159fc488997/e520ea4f9_generated_da7c6757.jpg" },
+      { model: "iPhone 12", brand: "Apple", price: "175 000 FCFA", storage: "64 Go", condition: "Occasion", img: "https://media.base44.com/images/public/6aa2ea92b6a40159fc488997/b520ea4f9_generated_da7c6758.jpg" },
+      { model: "Galaxy S23 Ultra", brand: "Samsung", price: "380 000 FCFA", storage: "256 Go", condition: "Neuf", img: "https://media.base44.com/images/public/6aa2ea92b6a40159fc488997/c520ea4f9_generated_da7c6759.jpg" },
+      { model: "Galaxy A54 5G", brand: "Samsung", price: "160 000 FCFA", storage: "128 Go", condition: "Neuf", img: "https://media.base44.com/images/public/6aa2ea92b6a40159fc488997/d520ea4f9_generated_da7c6760.jpg" },
+      { model: "Redmi Note 13 Pro", brand: "Xiaomi", price: "145 000 FCFA", storage: "256 Go", condition: "Neuf", img: "https://media.base44.com/images/public/6aa2ea92b6a40159fc488997/a520ea4f9_generated_da7c6761.jpg" },
+      { model: "Tecno Camon 20 Pro", brand: "Tecno", price: "130 000 FCFA", storage: "256 Go", condition: "Neuf", img: "https://media.base44.com/images/public/6aa2ea92b6a40159fc488997/f520ea4f9_generated_da7c6762.jpg" }
+    ];
+
+    let selBrand = "all";
+
+    function render(items) {
+      const g = document.getElementById("grid");
+      g.innerHTML = "";
+      items.forEach(p => {
+        const msg = encodeURIComponent(`Bonjour SmartLink, je veux commander le ${p.model} (${p.storage}, ${p.condition}) à ${p.price}.`);
+        g.innerHTML += `
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg transition flex flex-col justify-between">
+            <div class="aspect-[4/3] bg-slate-100 overflow-hidden relative">
+              <img src="${p.img}" class="w-full h-full object-cover" />
+              <span class="absolute top-2 left-2 text-[10px] font-bold bg-teal-100 text-teal-800 px-2 py-0.5 rounded">${p.condition}</span>
+              <span class="absolute bottom-2 right-2 text-[10px] font-bold bg-slate-900 text-white px-2 py-0.5 rounded">${p.storage}</span>
+            </div>
+            <div class="p-4 space-y-2">
+              <span class="text-[10px] uppercase font-bold text-teal-600">${p.brand}</span>
+              <h3 class="font-bold text-slate-900">${p.model}</h3>
+              <p class="font-black text-emerald-600 text-lg">${p.price}</p>
+              <a href="https://wa.me/${PHONE}?text=${msg}" target="_blank" class="w-full bg-[#25D366] hover:bg-[#20ba59] text-white py-2.5 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 shadow">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                Commander WhatsApp
+              </a>
+            </div>
+          </div>
+        `;
+      });
+      lucide.createIcons();
+    }
+
+    function applyFilters() {
+      const q = document.getElementById("searchInput").value.toLowerCase();
+      const res = phones.filter(p => (selBrand === "all" || p.brand === selBrand) && (p.model.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q)));
+      render(res);
+    }
+
+    function filterBrand(b) {
+      selBrand = b;
+      applyFilters();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+      render(phones);
+    });
+  </script>
+</body>
+</html>
